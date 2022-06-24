@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Onemc6nbjakRvZHHyLdCIUekCiEdfu+AuuYhqaLunxFd8xkz28m9vrYNy7hgcorzb+McLh2t9Csc9tfm26PpVQ==",
+  "dgSpecHash": "nbXmFLNysEVXVb0zgJg+BLMJb/kIU+KIAnYFwg3ROxIlbV3ishPL/3xQtqWYDjNsgu815HX1/dpryqbVgmRTnw==",
   "success": true,
   "projectFilePath": "C:\\Users\\AhmedHafez419\\Desktop\\work\\Asp.net_5_Practises\\DatingApp\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AhmedHafez419\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\AhmedHafez419\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.7\\microsoft.aspnetcore.authentication.jwtbearer.3.1.7.nupkg.sha512",
     "C:\\Users\\AhmedHafez419\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\AhmedHafez419\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\AhmedHafez419\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
