@@ -18,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using API.Extensions;
 
 namespace API
 {
@@ -33,26 +34,17 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITokenService, TokenService>();
-            services.AddControllers();
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dating Application", Version = "v1" });
-            });
+            services.AddApplicationServices(this.Configuration);
+            services.AddIdentityServiceExtensions(Configuration);
 
+            services.AddControllers();
             services.AddCors(options => options.AddPolicy("Default Policy", p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+            services.AddSwaggerGen(c =>
+             {
+                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dating Application", Version = "v1" });
+             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
