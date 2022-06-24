@@ -28,6 +28,22 @@ export class AccountService {
       );
   }
 
+  register(username: string, password: string): Observable<User> {
+    return this.apiService
+      .post<User>(`${this.apiUrl}/register`, {
+        username,
+        password,
+      })
+      .pipe(
+        tap((response: User) => {
+          if (response) {
+            this.currentUserSource.next(response);
+            localStorage.setItem('user', JSON.stringify(response));
+          }
+        })
+      );
+  }
+
   logout(): void {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
