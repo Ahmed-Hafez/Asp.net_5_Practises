@@ -33,7 +33,7 @@ namespace API
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dating Application", Version = "v1" });
             });
 
             services.AddCors(options => options.AddPolicy("Default Policy", p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
