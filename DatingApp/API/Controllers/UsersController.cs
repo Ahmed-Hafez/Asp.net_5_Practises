@@ -8,28 +8,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseApiController
     {
-        private readonly DataContext dataContext;
 
-        public UsersController(DataContext dataContext)
+        public UsersController(DataContext context) : base(context)
         {
-            this.dataContext = dataContext;
+
         }
 
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await dataContext.Users.ToListAsync();
+            var users = await context.Users.ToListAsync();
             return Ok(users);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUsers(int id)
         {
-            var user = await dataContext.Users.FindAsync(id);
+            var user = await context.Users.FindAsync(id);
             return Ok(user);
         }
     }
