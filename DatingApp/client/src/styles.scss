@@ -5,3 +5,17 @@
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+
+.app-flex-column {
+  &-sm {
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
+
+.dropdown-toggle, .dropdown-item {
+  cursor: pointer;
+}
