@@ -9,13 +9,17 @@ using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using API.DTOs;
 using Microsoft.EntityFrameworkCore;
+using API.Interfaces;
 
 namespace API.Controllers
 {
     public class AccountController : BaseApiController
     {
-        public AccountController(DataContext context) : base(context)
+        private readonly ITokenService tokenService;
+
+        public AccountController(DataContext context, ITokenService tokenService) : base(context)
         {
+            this.tokenService = tokenService;
         }
 
         [HttpPost("Register")]
@@ -38,7 +42,14 @@ namespace API.Controllers
             context.Users.Add(user);
 
             await context.SaveChangesAsync();
-            return CreatedAtAction(nameof(UsersController.GetUsers), "Users", new { id = user.Id }, user);
+
+            var userDto = new UserDto
+            {
+                Username = user.Username,
+                Token = tokenService.CreateToken(user)
+            };
+
+            return CreatedAtAction(nameof(UsersController.GetUsers), "Users", new { id = user.Id }, userDto);
         }
 
         [HttpPost("Login")]
@@ -62,7 +73,13 @@ namespace API.Controllers
                 }
             }
 
-            return Ok(user);
+            var userDto = new UserDto
+            {
+                Username = user.Username,
+                Token = tokenService.CreateToken(user)
+            };
+
+            return Ok(userDto);
         }
 
         private async Task<bool> UserExist(string username)
