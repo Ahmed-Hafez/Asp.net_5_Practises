@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './shared/components/home/home.component';
 import { RegisterComponent } from './shared/components/register/register.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent],
@@ -20,7 +22,7 @@ import { RegisterComponent } from './shared/components/register/register.compone
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    BsDropdownModule.forRoot(),
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

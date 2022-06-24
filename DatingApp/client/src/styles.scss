@@ -6,6 +6,11 @@
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
+/* Importing bootswatch theme CSS file */
+@import "node_modules/bootswatch/dist/united/bootstrap.min";
+
+/* Importing bootswatch theme CSS file */
+@import "node_modules/font-awesome/css/font-awesome.min";
 
 .app-flex-column {
   &-sm {
@@ -16,6 +21,7 @@
   }
 }
 
-.dropdown-toggle, .dropdown-item {
+.dropdown-toggle,
+.dropdown-item {
   cursor: pointer;
 }
