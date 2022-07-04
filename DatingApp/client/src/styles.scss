@@ -12,6 +12,8 @@
 /* Importing bootswatch theme CSS file */
 @import "node_modules/font-awesome/css/font-awesome.min";
 
+@import "node_modules/ngx-spinner/animations/ball-zig-zag-deflect";
+
 .app-flex-column {
   &-sm {
     @media (max-width: 768px) {

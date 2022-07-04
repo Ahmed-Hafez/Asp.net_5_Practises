@@ -1,5 +1,5 @@
 <div class="row" *ngIf="member">
-  <div class="col-4">
+  <div class="col-md-4 col-sm-12 mb-sm-4 mb-md-0">
     <div class="card">
       <img
         src="{{ member.photoUrl || 'assets/user.png' }}"
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="col-8">
+  <div class="col-md-8 col-sm-12">
     <tabset class="member-tabset">
       <tab heading="About {{ member.knownAs }}">
         <h4>Description</h4>

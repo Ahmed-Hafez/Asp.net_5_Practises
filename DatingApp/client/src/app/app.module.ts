@@ -1,4 +1,5 @@
-import { ErrorInterceptor } from './interceptors/error/error.interceptor';
+import { MemberDetailComponent } from './shared/components/members/member-detail/member-detail.component';
+import { MemberListComponent } from './shared/components/members/member-list/member-list.component';
 import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,11 @@ import { RegisterComponent } from './shared/components/register/register.compone
 import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { ServerErrorComponent } from './shared/components/server-error/server-error.component';
+import { MemberCardComponent } from './shared/components/member-card/member-card.component';
+import { ErrorInterceptor } from './core/interceptors/error/error.interceptor';
+import { JwtInterceptor } from './core/interceptors/jwt/jwt.interceptor';
+import { MemberEditComponent } from './shared/components/members/member-edit/member-edit.component';
+import { LoadingInterceptor } from './core/interceptors/loading/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,6 +31,10 @@ import { ServerErrorComponent } from './shared/components/server-error/server-er
     RegisterComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    MemberListComponent,
+    MemberCardComponent,
+    MemberDetailComponent,
+    MemberEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +46,8 @@ import { ServerErrorComponent } from './shared/components/server-error/server-er
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
