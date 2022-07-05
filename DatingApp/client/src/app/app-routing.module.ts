@@ -1,3 +1,5 @@
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { ServerErrorComponent } from './shared/components/server-error/server-error.component';
 import { PreventUnsavedChangesGuard } from './core/guards/prevent-unsaved-changes/prevent-unsaved-changes.guard';
 import { MemberEditComponent } from './shared/components/members/member-edit/member-edit.component';
 import { NgModule } from '@angular/core';
@@ -26,6 +28,14 @@ const routes: Routes = [
       { path: 'lists', component: ListsComponent },
       { path: 'messages', component: MessagesComponent },
     ],
+  },
+  {
+    path: 'server-error',
+    component: ServerErrorComponent,
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
   },
   { path: '**', component: HomeComponent, pathMatch: 'full' },
 ];

@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
   }
 
   setCurrentUser() {
-    this.accountService.setCurrentUser();
+    this.accountService.setCurrentUserFromLocalStorage();
   }
 }

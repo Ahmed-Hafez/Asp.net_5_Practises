@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Observable, of, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api/api.service';
@@ -8,6 +9,7 @@ import { Member } from 'src/app/shared/models/member.model';
 })
 export class MembersService {
   readonly apiUrl: string = 'api/users';
+  readonly addingPhotoUrl: string = `${environment.apiBaseUrl}${this.apiUrl}/add-photo`;
   members: Member[] = [];
 
   constructor(private apiService: ApiService) {}
@@ -35,5 +37,16 @@ export class MembersService {
         this.members[index] = member;
       })
     );
+  }
+
+  setMainPhoto(photoId: number): Observable<null> {
+    return this.apiService.put<null>(
+      `${this.apiUrl}/set-main-photo/${photoId}`,
+      {}
+    );
+  }
+
+  deletePhoto(photoId: number): Observable<null> {
+    return this.apiService.delete(`${this.apiUrl}/delete-photo/${photoId}`);
   }
 }

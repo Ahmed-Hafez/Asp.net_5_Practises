@@ -21,9 +21,10 @@ export class AccountService {
         password,
       })
       .pipe(
-        tap((response) => {
-          this.currentUserSource.next(response);
-          localStorage.setItem('user', JSON.stringify(response));
+        tap((user) => {
+          if (user) {
+            this.setCurrentUserToLocalStorage(user);
+          }
         })
       );
   }
@@ -35,10 +36,9 @@ export class AccountService {
         password,
       })
       .pipe(
-        tap((response: User) => {
-          if (response) {
-            this.currentUserSource.next(response);
-            localStorage.setItem('user', JSON.stringify(response));
+        tap((user: User) => {
+          if (user) {
+            this.setCurrentUserToLocalStorage(user);
           }
         })
       );
@@ -49,8 +49,13 @@ export class AccountService {
     this.currentUserSource.next(null);
   }
 
-  setCurrentUser() {
+  setCurrentUserFromLocalStorage() {
     const user: User = JSON.parse(localStorage.getItem('user'));
     this.currentUserSource.next(user);
+  }
+
+  setCurrentUserToLocalStorage(user: User) {
+    this.currentUserSource.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 }
