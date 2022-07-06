@@ -10,7 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './shared/components/nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './shared/components/home/home.component';
 import { RegisterComponent } from './shared/components/register/register.component';
@@ -23,6 +23,9 @@ import { JwtInterceptor } from './core/interceptors/jwt/jwt.interceptor';
 import { MemberEditComponent } from './shared/components/members/member-edit/member-edit.component';
 import { LoadingInterceptor } from './core/interceptors/loading/loading.interceptor';
 import { PhotoEditorComponent } from './shared/components/photo-editor/photo-editor.component';
+import { DateInputComponent } from './shared/components/forms/date-input/date-input.component';
+import { InputComponent } from './shared/components/forms/input/input.component';
+import { CastPipe } from './shared/pipes/cast.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { PhotoEditorComponent } from './shared/components/photo-editor/photo-edi
     MemberDetailComponent,
     MemberEditComponent,
     PhotoEditorComponent,
+    InputComponent,
+    DateInputComponent,
+    CastPipe,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +50,7 @@ import { PhotoEditorComponent } from './shared/components/photo-editor/photo-edi
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
   ],
   providers: [

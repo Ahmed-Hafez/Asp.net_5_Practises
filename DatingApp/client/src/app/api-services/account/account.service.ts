@@ -29,19 +29,14 @@ export class AccountService {
       );
   }
 
-  register(username: string, password: string): Observable<User> {
-    return this.apiService
-      .post<User>(`${this.apiUrl}/register`, {
-        username,
-        password,
+  register(model: any): Observable<User> {
+    return this.apiService.post<User>(`${this.apiUrl}/register`, model).pipe(
+      tap((user: User) => {
+        if (user) {
+          this.setCurrentUserToLocalStorage(user);
+        }
       })
-      .pipe(
-        tap((user: User) => {
-          if (user) {
-            this.setCurrentUserToLocalStorage(user);
-          }
-        })
-      );
+    );
   }
 
   logout(): void {
