@@ -12,4 +12,10 @@
   <div *ngIf="ngControl.control.errors?.required" class="invalid-feedback">
     {{ label }} is required
   </div>
+  <div
+    *ngIf="ngControl.control.errors?.bsDate?.invalid"
+    class="invalid-feedback"
+  >
+    {{ label }} is invalid
+  </div>
 </div>
