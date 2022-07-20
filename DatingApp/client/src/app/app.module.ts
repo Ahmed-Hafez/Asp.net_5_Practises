@@ -1,3 +1,4 @@
+import { ListsComponent } from './shared/components/lists/lists.component';
 import { MemberDetailComponent } from './shared/components/members/member-detail/member-detail.component';
 import { MemberListComponent } from './shared/components/members/member-list/member-list.component';
 import { SharedModule } from './shared/shared.module';
@@ -39,6 +40,7 @@ import { CastPipe } from './shared/pipes/cast.pipe';
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
+    ListsComponent,
     PhotoEditorComponent,
     InputComponent,
     DateInputComponent,

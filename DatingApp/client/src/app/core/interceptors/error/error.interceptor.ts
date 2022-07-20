@@ -30,9 +30,14 @@ export class ErrorInterceptor implements HttpInterceptor {
                 }
 
                 throw modalStateErrors.flat();
-              } else {
+              } else if (typeof errorResponse.error === 'object') {
                 this.toastr.error(
                   errorResponse.statusText,
+                  errorResponse.status.toString()
+                );
+              } else {
+                this.toastr.error(
+                  errorResponse.error,
                   errorResponse.status.toString()
                 );
               }
@@ -50,10 +55,10 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
 
             case 500:
-              const navigationExstras: NavigationExtras = {
+              const navigationExtras: NavigationExtras = {
                 state: { error: errorResponse.error },
               };
-              this.router.navigateByUrl('/server-error', navigationExstras);
+              this.router.navigateByUrl('/server-error', navigationExtras);
               break;
 
             default:
