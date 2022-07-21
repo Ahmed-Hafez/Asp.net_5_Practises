@@ -50,8 +50,8 @@ namespace API.Data
             };
 
             return await PagedList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>(mapper
-                .ConfigurationProvider).AsNoTracking(), 
-                    userParams.PageNumber, userParams.PageSize);
+                .ConfigurationProvider).AsNoTracking(),
+                    userParams);
         }
 
         public async Task<AppUser> GetUserByIdAsync(int id)

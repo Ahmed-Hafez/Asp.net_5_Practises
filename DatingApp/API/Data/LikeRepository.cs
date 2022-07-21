@@ -50,8 +50,7 @@ namespace API.Data
             return await PagedList<LikeDto>
                             .CreateAsync(
                                 users.ProjectTo<LikeDto>(mapper.ConfigurationProvider).AsNoTracking(),
-                                likesParams.PageNumber,
-                                likesParams.PageSize
+                                likesParams
                             );
         }
 
