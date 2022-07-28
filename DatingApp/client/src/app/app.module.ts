@@ -1,3 +1,5 @@
+import { MessagesComponent } from './shared/components/messages/messages.component';
+import { MemberMessagesComponent } from './shared/components/members/member-messages/member-messages.component';
 import { ListsComponent } from './shared/components/lists/lists.component';
 import { MemberDetailComponent } from './shared/components/members/member-detail/member-detail.component';
 import { MemberListComponent } from './shared/components/members/member-list/member-list.component';
@@ -45,6 +47,8 @@ import { CastPipe } from './shared/pipes/cast.pipe';
     InputComponent,
     DateInputComponent,
     CastPipe,
+    MemberMessagesComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

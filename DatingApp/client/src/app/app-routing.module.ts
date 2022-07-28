@@ -10,6 +10,7 @@ import { ListsComponent } from './shared/components/lists/lists.component';
 import { MemberDetailComponent } from './shared/components/members/member-detail/member-detail.component';
 import { MemberListComponent } from './shared/components/members/member-list/member-list.component';
 import { MessagesComponent } from './shared/components/messages/messages.component';
+import { MemberDetailedResolver } from './core/resolvers/member-detailed/member-detailed.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +25,11 @@ const routes: Routes = [
         component: MemberEditComponent,
         canDeactivate: [PreventUnsavedChangesGuard],
       },
-      { path: 'members/:username', component: MemberDetailComponent },
+      {
+        path: 'members/:username',
+        component: MemberDetailComponent,
+        resolve: { member: MemberDetailedResolver },
+      },
       { path: 'lists', component: ListsComponent },
       { path: 'messages', component: MessagesComponent },
     ],
